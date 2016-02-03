@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Text;
     using System.Web.Http.Tracing;
@@ -44,6 +45,8 @@
         {
             var message = new StringBuilder();
 
+            message.Append(Environment.NewLine);
+
             if (!string.IsNullOrWhiteSpace(record.Message))
             {
                 message.Append(string.Empty).Append(record.Message + Environment.NewLine);
@@ -59,6 +62,17 @@
                 if (record.Request.RequestUri != null)
                 {
                     message.Append(string.Empty).Append("URL: " + record.Request.RequestUri + Environment.NewLine);
+                }
+
+                if (record.Request.Headers != null && record.Request.Headers.Any()
+                    && record.Request.Headers.Contains("Correlation-Id")
+                    && !string.IsNullOrWhiteSpace(
+                        record.Request.Headers.Single(h => h.Key == "Correlation-Id").Value.Single()))
+                {
+                    message.Append(string.Empty)
+                        .Append(
+                            "CorrelationId: "
+                            + record.Request.Headers.Single(h => h.Key == "Correlation-Id").Value.Single() + Environment.NewLine);
                 }
             }
 

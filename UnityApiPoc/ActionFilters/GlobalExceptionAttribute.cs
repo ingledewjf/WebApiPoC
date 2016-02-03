@@ -1,14 +1,11 @@
 ﻿namespace UnityApiPoc.ActionFilters
 {
     using System;
-    using System.ComponentModel.DataAnnotations;
     using System.Web.Http;
     using System.Web.Http.Filters;
     using System.Web.Http.Tracing;
 
     using UnityApiPoc.Helpers;
-
-    using ITraceWriter = Newtonsoft.Json.Serialization.ITraceWriter;
 
     public class GlobalExceptionAttribute : ExceptionFilterAttribute
     {

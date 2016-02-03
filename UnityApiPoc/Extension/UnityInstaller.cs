@@ -2,6 +2,7 @@
 {
     using Microsoft.Practices.Unity;
 
+    using UnityApiPoc.Helpers;
     using UnityApiPoc.Values;
 
     public static class UnityInstaller
@@ -15,6 +16,7 @@
                 typeof(IDisposableValuesProvider),
                 typeof(DisposableValuesProvider),
                 new PerRequestLifetimeManager());
+            container.RegisterType(typeof(System.Web.Http.Tracing.ITraceWriter), typeof(NLogger), new HierarchicalLifetimeManager());
 
             return container;
         }

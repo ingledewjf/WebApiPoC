@@ -8,8 +8,6 @@
 
     using UnityApiPoc.Helpers;
 
-    using ITraceWriter = Newtonsoft.Json.Serialization.ITraceWriter;
-
     public class LoggingFilterAttribute : ActionFilterAttribute
     {
         public override void OnActionExecuting(HttpActionContext context)
