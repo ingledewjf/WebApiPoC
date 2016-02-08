@@ -25,7 +25,7 @@
             {
                 if (disposing)
                 {
-                    // todo release managed resources
+                    // todo release managed resources if there are any to release...
                 }
 
                 if (_unmanagerPtr != IntPtr.Zero)
